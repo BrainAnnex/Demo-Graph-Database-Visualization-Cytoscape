@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.21.2/cytoscape.umd.js"></script>
+
+    <style type="text/css">
+        #some_id_value {
+            width: 500px;
+            height: 500px;
+			border: solid blue 1px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div id='some_id_value'>
+    <!-- CYTOSCAPE.js WILL INSERT THE GRAPH HERE -->
+</div>
+
+
+<script>
+var cy = cytoscape({
+  container: document.getElementById('some_id_value'),    // Container to render in
+
+  elements: [ // List of graph elements to start with
+    { // node a
+      data: { id: 'a' }
+    },
+    { // node b
+      data: { id: 'b' }
+    },
+    { // edge ab
+      data: { id: 'ab', source: 'a', target: 'b' }
+    }
+  ],
+
+  style: [ // the stylesheet for the graph
+    {
+      selector: 'node',
+      style: {
+        'background-color': '#6b6',   // Green
+        'label': 'data(id)'
+      }
+    },
+    {
+      selector: 'edge',
+      style: {
+        'width': 3,
+        'line-color': '#ccc',
+        'target-arrow-color': '#ccc',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    }
+  ],
+
+  layout: {
+    name: 'grid',    // OR 'circle', etc
+    rows: 1
+  }
+});
+</script>
+
+
+</body>
+</html>
